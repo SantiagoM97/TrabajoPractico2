@@ -1,0 +1,10 @@
+mi-ecommerce
+-index.html (bienvenida)
+-pages /
+    - productos.html
+    -quienes.html
+    -formulario.html
+-assets/
+    -img / (imagenes)
+    -sytyles (archivos css)
+    -js (archivos javascript)
