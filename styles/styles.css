@@ -1,0 +1,229 @@
+/* === RESETEO GENERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === ESTILOS GENERALES === */
+body {
+  background: linear-gradient(to bottom right, #f6e6cb, #f1d1b5);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #3c2f23;
+  margin: 0;
+  padding: 0;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background-color: #c98a5b;
+  padding: 14px 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  margin: 0 18px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff5e6;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.activo {
+  color: #fcefd9;
+  border-bottom: 2px solid white;
+}
+
+/* === SECCIÓN BIENVENIDA === */
+.bienvenido {
+  text-align: center;
+  margin: 70px auto 40px;
+  color: #5c3d2e;
+}
+
+.bienvenido h2 {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+}
+
+.bienvenido p {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* === TEXTO PRINCIPAL === */
+.TextoPrincipal {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  background-color: rgba(255, 250, 243, 0.9);
+  padding: 30px;
+  border-radius: 12px;
+  line-height: 1.6;
+  text-align: justify;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.GranImagen,
+.imagen-principal {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  margin: 40px auto 60px;
+}
+
+.imagen-principal img {
+  width: 100%;
+  max-width: 400px; 
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  display: block;
+}
+
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  padding: 0 30px;
+}
+
+
+.card {
+  background-color: #fffaf3;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d1b193;
+}
+
+.card h3 {
+  color: #7b5b34;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #3c2f23;
+}
+
+
+.registro-container {
+  background-color: #fffaf3;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 340px;
+  margin: 50px auto;
+}
+
+h1 {
+  text-align: center;
+  color: #4b3b2a;
+  margin-bottom: 25px;
+}
+
+.volver {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.volver a {
+  text-decoration: none;
+  color: #7b5b34;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.volver a:hover {
+  color: #a87437;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  color: #3c2f23;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid #bfa77a;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fffdf9;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: #c4934d;
+  outline: none;
+  box-shadow: 0 0 5px rgba(196, 147, 77, 0.4);
+}
+
+button {
+  background-color: #c4934d;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #a87437;
+}
+
+/* === IMÁGENES SIMPLES (ej. picadas) === */
+.picada {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  border: 2px solid #a87437;
+  display: block;
+  margin: auto;
+}
