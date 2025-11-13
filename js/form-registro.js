@@ -10,7 +10,6 @@ document.getElementById("form-registro").addEventListener("submit", function (e)
 
 
   if (nombre && apellido && email && password && fecha) {
-   
     const usuario = { nombre, apellido, email, password, fecha };
     localStorage.setItem("usuarioLogueado", email);
 
