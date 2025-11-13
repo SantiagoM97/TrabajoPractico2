@@ -1,10 +1,9 @@
 const paginas = [
-  { titulo: "Bienvenida", url: "./index.html" },
-  { titulo: "Productos", url: "../pages/productos.html" },
-  { titulo: "Registro", url: "../pages/registro.html" },
-  { titulo: "Iniciar sesión", url: "../pages/inicio.html" }
+  { titulo: "Bienvenida", url: "/index.html" },
+  { titulo: "Productos", url: "/pages/productos.html" },
+  { titulo: "Registro", url: "/pages/registro.html" },
+  { titulo: "Iniciar sesión", url: "/pages/inicio.html" }
 ];
-
 // Crear el contenedor del navbar
 const nav = document.createElement("nav");
 nav.classList.add("navbar");
@@ -49,7 +48,7 @@ if (usuarioLogueado) {
   aCerrar.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.removeItem("usuarioLogueado");
-    window.location.href = "./index.html"; // volver a la página principal
+    window.location.href = "../index.html"; // volver a la página principal
   });
 
   liCerrar.appendChild(aCerrar);
