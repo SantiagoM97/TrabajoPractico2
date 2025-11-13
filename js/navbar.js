@@ -1,26 +1,22 @@
+// Lista de páginas
 const paginas = [
   { titulo: "Bienvenida", url: "/index.html" },
   { titulo: "Productos", url: "/pages/productos.html" },
   { titulo: "Registro", url: "/pages/registro.html" },
   { titulo: "Iniciar sesión", url: "/pages/inicio.html" }
 ];
-// Crear el contenedor del navbar
+
 const nav = document.createElement("nav");
 nav.classList.add("navbar");
 
 const ul = document.createElement("ul");
 
-// Obtener usuario logueado (si existe)
 const usuarioLogueado = localStorage.getItem("usuarioLogueado");
 
 paginas.forEach((pagina) => {
-  // Si el usuario está logueado, no mostrar las opciones de registro ni inicio
-  if (usuarioLogueado && (pagina.titulo === "Registro" || pagina.titulo === "Iniciar sesión")) {
-    return;
-  }
 
-  // Si NO está logueado, no mostrar productos
-  if (!usuarioLogueado && pagina.titulo === "Productos") {
+  // Si el usuario está logueado, NO mostrar Registro ni Iniciar sesión
+  if (usuarioLogueado && (pagina.titulo === "Registro" || pagina.titulo === "Iniciar sesión")) {
     return;
   }
 
@@ -29,7 +25,7 @@ paginas.forEach((pagina) => {
   a.textContent = pagina.titulo;
   a.href = pagina.url;
 
-  // Detectar la página actual para marcarla como activa
+  // Marcar página activa
   if (window.location.pathname.endsWith(pagina.url.split("/").pop())) {
     a.classList.add("activo");
   }
@@ -38,17 +34,18 @@ paginas.forEach((pagina) => {
   ul.appendChild(li);
 });
 
-// Si el usuario está logueado, agregar botón de cerrar sesión
+// Botón cerrar sesión
 if (usuarioLogueado) {
   const liCerrar = document.createElement("li");
   const aCerrar = document.createElement("a");
+
   aCerrar.textContent = "Cerrar sesión";
   aCerrar.href = "#";
 
   aCerrar.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.removeItem("usuarioLogueado");
-    window.location.href = "../index.html"; // volver a la página principal
+    window.location.href = "/index.html";
   });
 
   liCerrar.appendChild(aCerrar);
@@ -57,5 +54,5 @@ if (usuarioLogueado) {
 
 nav.appendChild(ul);
 
-// Insertar el navbar al inicio del body
+// Insertar navbar al inicio del body
 document.body.insertBefore(nav, document.body.firstChild);
