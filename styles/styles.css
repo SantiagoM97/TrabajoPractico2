@@ -13,7 +13,7 @@ body {
   padding: 0;
 }
 
-/* Barra de navegación */
+
 .navbar {
   background-color: #c98a5b;
   padding: 14px 0;
@@ -46,7 +46,7 @@ body {
   border-bottom: 2px solid white;
 }
 
-/* Sección de bienvenida */
+
 .bienvenido {
   text-align: center;
   margin: 70px auto 40px;
@@ -63,7 +63,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Texto principal */
+
 .TextoPrincipal {
   max-width: 800px;
   margin: 0 auto 60px;
@@ -75,7 +75,7 @@ body {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Imagen principal */
+
 .GranImagen,
 .imagen-principal {
   display: flex;
@@ -94,7 +94,7 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* Contenedor de cards */
+
 .contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -104,7 +104,7 @@ body {
   padding: 0 30px;
 }
 
-/* Tarjetas */
+
 .card {
   background-color: #fffaf3;
   border-radius: 14px;
@@ -136,7 +136,7 @@ body {
   color: #3c2f23;
 }
 
-/* Formulario de registro */
+
 .registro-container {
   background-color: #fffaf3;
   padding: 35px 40px;
@@ -219,7 +219,7 @@ button:hover {
   background-color: #a87437;
 }
 
-/* Imagen tipo producto */
+
 .picada {
   width: 100%;
   max-width: 500px;
@@ -229,7 +229,7 @@ button:hover {
   margin: auto;
 }
 
-/* Página de inicio de sesión */
+
 body.inicio-sesion-page {
   display: flex;
   justify-content: center;
