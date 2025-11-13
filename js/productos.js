@@ -6,6 +6,8 @@ function mostrarProductos() {
     <div class="card">
       <img src="../images/picada.png" alt="Set 1">
       <h3>Set 1</h3>
+      <br>
+      <h3>Precio: $5500</h3>
       <p>Quesos, fiambres y pan artesanal.</p>
 
       <div class="cantidad-control">
@@ -13,13 +15,15 @@ function mostrarProductos() {
         <span class="cantidad">1</span>
         <button class="mas">+</button>
       </div>
-
+      
       <button class="agregar" data-id="1">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="../images/picada.png" alt="Set 2">
       <h3>Set 2</h3>
+      <br>
+      <h3>Precio: $1500</h3>
       <p>Selección premium con jamón crudo.</p>
 
       <div class="cantidad-control">
@@ -34,6 +38,8 @@ function mostrarProductos() {
     <div class="card">
       <img src="../images/picada.png" alt="Set 3">
       <h3>Set 3</h3>
+      <br>
+      <h3>Precio: $2800</h3>
       <p>Incluye hummus y vegetales grillados.</p>
 
       <div class="Cantidad-control">
@@ -41,7 +47,6 @@ function mostrarProductos() {
         <span class="cantidad">1</span>
         <button class="mas">+</button>
       </div>
-
       <button class="agregar" data-id="3">Agregar al carrito</button>
     </div>
   `;

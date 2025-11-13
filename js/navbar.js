@@ -1,4 +1,4 @@
-// Lista de páginas
+
 const paginas = [
   { titulo: "Bienvenida", url: "/index.html" },
   { titulo: "Productos", url: "/pages/productos.html" },
@@ -15,7 +15,7 @@ const usuarioLogueado = localStorage.getItem("usuarioLogueado");
 
 paginas.forEach((pagina) => {
 
-  // Si el usuario está logueado, NO mostrar Registro ni Iniciar sesión
+
   if (usuarioLogueado && (pagina.titulo === "Registro" || pagina.titulo === "Iniciar sesión")) {
     return;
   }
@@ -25,7 +25,7 @@ paginas.forEach((pagina) => {
   a.textContent = pagina.titulo;
   a.href = pagina.url;
 
-  // Marcar página activa
+  
   if (window.location.pathname.endsWith(pagina.url.split("/").pop())) {
     a.classList.add("activo");
   }
@@ -34,7 +34,7 @@ paginas.forEach((pagina) => {
   ul.appendChild(li);
 });
 
-// Botón cerrar sesión
+
 if (usuarioLogueado) {
   const liCerrar = document.createElement("li");
   const aCerrar = document.createElement("a");
@@ -54,5 +54,5 @@ if (usuarioLogueado) {
 
 nav.appendChild(ul);
 
-// Insertar navbar al inicio del body
+
 document.body.insertBefore(nav, document.body.firstChild);
