@@ -1,0 +1,38 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Set 1",
+      "precio": 5500,
+      "descripcion": "Quesos, fiambres y pan artesanal",
+      "imagen": "../images/picada.png",
+      "categoria": "Picadas"
+    },
+    {
+      "id": 2,
+      "nombre": "Set 2",
+      "precio": 1500,
+      "descripcion": "Selección premium con jamón crudo",
+      "imagen": "../images/set4.jpeg",
+      "categoria": "Picadas"
+    },
+   
+    {
+      "id": 3,
+      "nombre": "Redonditos de ricota",
+      "precio": 2800,
+      "descripcion": "Mate personalizado Patricio Rey",
+      "imagen": "../images/matepersonalizado1.jpg",
+      "categoria": "Mates personalizados"
+    },
+    {
+      "id": 4,
+      "nombre": "Rincon Literario",
+      "precio": 2800,
+      "descripcion": "Mate para biblioteca Rincon Literario",
+      "imagen": "../images/matepersonalizado2.jpeg",
+      "categoria": "Mates personalizados"
+    }
+
+  ]
+}

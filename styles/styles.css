@@ -95,14 +95,6 @@ body {
 }
 
 
-.contenedor {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
-  max-width: 1000px;
-  margin: 0 auto 80px;
-  padding: 0 30px;
-}
 
 
 .card {
@@ -287,4 +279,247 @@ body.inicio-sesion-page {
 
 .iniciosesion-container button:hover {
   background-color: #a97833;
+}
+
+.categoria {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Título de categoría */
+.categoria h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Grid de productos dentro de cada categoría */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+#lista-productos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+/* Contenedor de cada categoría */
+.categoria {
+  margin-bottom: 60px;
+}
+
+/* Título de categoría */
+.categoria h3 {
+  font-size: 1.9rem;
+  margin: 25px 0 20px 5px;
+  font-weight: 700;
+  color: #5a3e2b;
+}
+
+/* Grilla de cards */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ====== CARD ====== */
+.card {
+  background: #fff;
+  padding: 15px 15px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.20);
+}
+
+/* Imagen del producto */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Título */
+.card h4 {
+  font-size: 1.2rem;
+  margin: 12px 0 5px;
+  color: #3b2a1f;
+  font-weight: bold;
+}
+
+/* Descripción */
+.card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: #5b4a3a;
+}
+
+/* Precio */
+.card p strong {
+  font-size: 1rem;
+  color: #2a1f16;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+
+.card button {
+  margin-top: 12px;
+  background: #c28c3d;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s ease;
+}
+
+.card button:hover {
+  background: #a87531;
+}
+
+.card img {
+    width: 100%;
+    height: 350px;       
+    object-fit: cover;   
+    object-position: center;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.categoria h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 35px 0 25px;
+  color: #4b3323;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.categoria h3::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #c4934d;
+  border-radius: 4px;
+}
+
+.card {
+  background: #fffdf8;
+  border: 1px solid #eadac4;
+  border-radius: 18px;
+  padding: 18px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.categoria {
+  margin-bottom: 80px;
+}
+
+.cantidad-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.btn-cant {
+  background: #d1b48c;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cant:hover {
+  background: #b49770;
+}
+
+.cantidad {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn.agregar {
+  background: #8c5e3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn.agregar:hover {
+  background: #724a2e;
+}
+
+.titulo-home {
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+  text-align: center;
+  color: #7a5c3a;
+}
+
+.titulo-home-categoria {
+  font-size: 1.4rem;
+  margin: 20px 0 10px;
+  color: #a67c52;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.small-card {
+  background: #fffdf8;
+  border: 1px solid #eadac4;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  transition: transform .25s ease;
+}
+
+.small-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.small-card:hover {
+  transform: scale(1.03);
 }
