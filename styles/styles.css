@@ -21,11 +21,7 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+
 
 .navbar li {
   display: inline-block;
@@ -522,4 +518,237 @@ body.inicio-sesion-page {
 
 .small-card:hover {
   transform: scale(1.03);
+}
+
+.tabla-carrito {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background: #fff7e6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-carrito th {
+  background: #d29b6e;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.tabla-carrito td {
+  padding: 12px;
+  font-size: 16px;
+  border-bottom: 1px solid #e0c7a5;
+}
+
+.tabla-carrito tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-carrito tr:nth-child(even) {
+  background: #fff1dc;
+}
+
+
+button.eliminar {
+  background: #d47a4a;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+button.eliminar:hover {
+  background: #b1653e;
+}
+
+
+.tabla-carrito tr:last-child td {
+  background: #ffe9c7;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+
+
+.navbar a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: black;
+  font-weight: 500;
+}
+
+
+.icono-carrito {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.icono-carrito {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.2s;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+.icono-carrito:hover {
+  transform: scale(1.12);
+}
+
+
+.navbar {
+    font-family: 'Inter', 'Poppins', sans-serif; /* tipografía moderna */
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.25s ease, opacity 0.25s ease;
+    opacity: 0.85;
+}
+
+.navbar a:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* Para dar aspecto limpio */
+.navbar .nav-item {
+    padding: 0 12px;
+}
+
+/* Opcional: si usás un background oscuro */
+.navbar {
+    background: #111; /* moderno y minimalista */
+}
+
+/* Logotipo */
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+.navbar-brand:hover {
+    opacity: 1;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 
+        transform 0.25s cubic-bezier(.18,.89,.32,1.28),
+        opacity 0.25s ease,
+        color 0.25s ease;
+    opacity: 0.85;
+    display: inline-block; /* necesario para que transform funcione bien */
+}
+
+.navbar a:hover {
+    opacity: 1;
+    transform: scale(1.07) translateZ(0); /* sensación de acercarse */
+}
+
+/* Para el brand también */
+.navbar-brand {
+    transition: transform 0.25s cubic-bezier(.18,.89,.32,1.28), opacity 0.25s ease;
+    display: inline-block;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.09) translateZ(0);
+    opacity: 1;
+}
+
+.navbar a.no-anim {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+/* Ajustes del ícono */
+.cart-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+#cart-count {
+    background: #ff4757;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}
+
+.carrito-flotante {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.carrito-flotante .cart-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(100%); /* blanco minimalista */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.carrito-flotante .cart-icon:hover {
+    transform: scale(1.12);
+}
+
+/* Contador rojo */
+#cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: white;
+    font-size: 13px;
+    min-width: 18px;
+    height: 18px;
+    padding: 1px 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }

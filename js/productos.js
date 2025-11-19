@@ -1,26 +1,38 @@
 document.addEventListener("DOMContentLoaded", iniciarProductos);
 
 async function iniciarProductos() {
+
   console.log("JS cargado");
 
   const listaProductos = document.getElementById("lista-productos");
 
- 
+  // --------- FETCH PRODUCTOS JSON ----------
+  let productos = [];
   try {
     const response = await fetch("../data/productos.json");
     const data = await response.json();
-    var productos = data.productos;
+    productos = data.productos;
   } catch (error) {
     console.error("Error al cargar productos.json", error);
     return;
   }
 
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+  // --------- CARRITO ----------
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+
+  // Si el carrito NO es un objeto → lo corregimos
+  if (!carrito || typeof carrito !== "object" || Array.isArray(carrito)) {
+    carrito = {};
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    document.dispatchEvent(new Event('carritoActualizado'));
+  }
 
   function guardarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    document.dispatchEvent(new Event('carritoActualizado'));
   }
 
+  // Cantidades iniciales
   let cantidades = {};
   productos.forEach(p => cantidades[p.id] = 1);
 
@@ -28,15 +40,14 @@ async function iniciarProductos() {
     return localStorage.getItem("usuarioLogueado") !== null;
   }
 
-
+  // --------- AGRUPAR POR CATEGORÍA ----------
   const categorias = {};
-
   productos.forEach(p => {
     if (!categorias[p.categoria]) categorias[p.categoria] = [];
     categorias[p.categoria].push(p);
   });
 
- 
+  // --------- RENDER DE PRODUCTOS ----------
   for (const cat in categorias) {
     const div = document.createElement("div");
     div.classList.add("categoria");
@@ -67,6 +78,7 @@ async function iniciarProductos() {
   }
 
 
+  // --------- BOTONES DE SUMAR/RESTAR ----------
   document.addEventListener("click", e => {
     if (!e.target.classList.contains("btn-cant")) return;
 
@@ -79,6 +91,8 @@ async function iniciarProductos() {
     document.getElementById(`cant-${id}`).textContent = cantidades[id];
   });
 
+
+  // --------- AGREGAR AL CARRITO ----------
   document.addEventListener("click", e => {
     if (!e.target.classList.contains("agregar")) return;
 
@@ -88,10 +102,10 @@ async function iniciarProductos() {
     }
 
     const id = e.target.dataset.id;
-    const cant = cantidades[id];
+    const cantidad = cantidades[id];
 
     if (!carrito[id]) carrito[id] = 0;
-    carrito[id] += cant;
+    carrito[id] += cantidad;
 
     guardarCarrito();
     alert("Producto agregado al carrito ✔");
