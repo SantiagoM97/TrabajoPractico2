@@ -6,7 +6,7 @@ async function iniciarProductos() {
 
   const listaProductos = document.getElementById("lista-productos");
 
-  // --------- FETCH PRODUCTOS JSON ----------
+
   let productos = [];
   try {
     const response = await fetch("../data/productos.json");
@@ -17,10 +17,10 @@ async function iniciarProductos() {
     return;
   }
 
-  // --------- CARRITO ----------
+  
   let carrito = JSON.parse(localStorage.getItem("carrito"));
 
-  // Si el carrito NO es un objeto → lo corregimos
+
   if (!carrito || typeof carrito !== "object" || Array.isArray(carrito)) {
     carrito = {};
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -32,7 +32,7 @@ async function iniciarProductos() {
     document.dispatchEvent(new Event('carritoActualizado'));
   }
 
-  // Cantidades iniciales
+  
   let cantidades = {};
   productos.forEach(p => cantidades[p.id] = 1);
 
@@ -40,14 +40,14 @@ async function iniciarProductos() {
     return localStorage.getItem("usuarioLogueado") !== null;
   }
 
-  // --------- AGRUPAR POR CATEGORÍA ----------
+
   const categorias = {};
   productos.forEach(p => {
     if (!categorias[p.categoria]) categorias[p.categoria] = [];
     categorias[p.categoria].push(p);
   });
 
-  // --------- RENDER DE PRODUCTOS ----------
+ 
   for (const cat in categorias) {
     const div = document.createElement("div");
     div.classList.add("categoria");
@@ -78,7 +78,7 @@ async function iniciarProductos() {
   }
 
 
-  // --------- BOTONES DE SUMAR/RESTAR ----------
+ 
   document.addEventListener("click", e => {
     if (!e.target.classList.contains("btn-cant")) return;
 
@@ -92,7 +92,6 @@ async function iniciarProductos() {
   });
 
 
-  // --------- AGREGAR AL CARRITO ----------
   document.addEventListener("click", e => {
     if (!e.target.classList.contains("agregar")) return;
 
