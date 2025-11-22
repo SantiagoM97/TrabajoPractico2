@@ -1,33 +1,30 @@
-/* ---------------------------------------
-   NAVBAR (tu código, intacto)
-------------------------------------------*/
-
 const paginas = [
   { titulo: "Bienvenida", url: "/index.html" },
   { titulo: "Productos", url: "/pages/productos.html" },
   { titulo: "Registro", url: "/pages/registro.html" },
   { titulo: "Iniciar sesión", url: "/pages/inicio.html" },
- 
+  { titulo: "Carrito", url: "/pages/carrito.html", icono: "/images/cart.png" }
 ];
 
 const nav = document.createElement("nav");
 nav.classList.add("navbar");
 
 const ul = document.createElement("ul");
+nav.appendChild(ul);
 
 const usuarioLogueado = localStorage.getItem("usuarioLogueado");
 
+// ----------------------
+// MENÚ PRINCIPAL
+// ----------------------
 paginas.forEach((pagina) => {
-  if (usuarioLogueado && (pagina.titulo === "Registro" || pagina.titulo === "Iniciar sesión")) {
-    return;
-  }
+  if (usuarioLogueado && (pagina.titulo === "Registro" || pagina.titulo === "Iniciar sesión")) return;
 
   const li = document.createElement("li");
   const a = document.createElement("a");
 
   if (pagina.icono) {
-    
-    a.classList.add("no-anim"); 
+    a.classList.add("no-anim");
 
     const img = document.createElement("img");
     img.src = pagina.icono;
@@ -40,10 +37,9 @@ paginas.forEach((pagina) => {
 
     a.appendChild(img);
     a.appendChild(contador);
-
-} else {
+  } else {
     a.textContent = pagina.titulo;
-}
+  }
 
   a.href = pagina.url;
 
@@ -55,7 +51,7 @@ paginas.forEach((pagina) => {
   ul.appendChild(li);
 });
 
-// Botón Cerrar sesión
+
 if (usuarioLogueado) {
   const liCerrar = document.createElement("li");
   const aCerrar = document.createElement("a");
@@ -73,25 +69,48 @@ if (usuarioLogueado) {
   ul.appendChild(liCerrar);
 }
 
-nav.appendChild(ul);
+
 document.body.insertBefore(nav, document.body.firstChild);
-const carritoFijo = document.createElement("a");
-carritoFijo.href = "/pages/carrito.html";
-carritoFijo.classList.add("carrito-flotante");
 
-carritoFijo.innerHTML = `
-  <img src="/images/cart.png" class="cart-icon" alt="Carrito">
-  <span id="cart-count">0</span>
-`;
 
-document.body.appendChild(carritoFijo);
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleDark = document.createElement("button");
+  toggleDark.id = "toggle-dark";
+  toggleDark.innerHTML = "🌙";
+  toggleDark.classList.add("toggle-dark-btn");
 
-/* ---------------------------------------------------
-   FUNCIONALIDAD EXTRA: Cargar productos + Carrito
-   (Sumado sin tocar tu código original)
-------------------------------------------------------*/
+  // Crear contenedor dentro del navbar
+  const navUtils = document.createElement("div");
+  navUtils.classList.add("nav-utils"); // contenedor a la derecha
+  navUtils.appendChild(toggleDark);
 
-// Cargar productos desde /data/productos.json
+  // Agregar el contenedor al navbar
+  nav.appendChild(navUtils);
+
+  // Restaurar estado guardado
+  const modoGuardado = localStorage.getItem("dark-mode");
+  if (modoGuardado === "on") {
+    document.body.classList.add("dark-mode");
+    toggleDark.innerHTML = "☀️";
+  }
+
+  // Toggle dark mode
+  toggleDark.addEventListener("click", (e) => {
+    e.stopPropagation();
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("dark-mode", "on");
+      toggleDark.innerHTML = "☀️";
+    } else {
+      localStorage.setItem("dark-mode", "off");
+      toggleDark.innerHTML = "🌙";
+    }
+  });
+});
+
+
+
 async function cargarProductos() {
   try {
     const resp = await fetch("/data/productos.json");
@@ -102,10 +121,9 @@ async function cargarProductos() {
   }
 }
 
-// Insertar productos en la página Productos
 function mostrarProductos(lista) {
   const contenedor = document.getElementById("contenedor-productos");
-  if (!contenedor) return; // si no estamos en productos.html
+  if (!contenedor) return;
 
   contenedor.innerHTML = "";
 
@@ -128,12 +146,13 @@ function mostrarProductos(lista) {
   });
 }
 
-/* --------------------------
-   Carrito (localStorage)
------------------------------*/
 
 function obtenerCarrito() {
-  return JSON.parse(localStorage.getItem("carrito")) || [];
+  try {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+  } catch {
+    return [];
+  }
 }
 
 function guardarCarrito(carrito) {
@@ -148,7 +167,6 @@ async function agregarAlCarrito(idProducto) {
   if (!producto) return;
 
   let carrito = obtenerCarrito();
-
   const existe = carrito.find(item => item.id == producto.id);
 
   if (existe) {
@@ -158,17 +176,15 @@ async function agregarAlCarrito(idProducto) {
   }
 
   guardarCarrito(carrito);
+  updateCartCount();
   alert("Producto agregado al carrito");
 }
 
-
-// Mostrar carrito en carrito.html
 function mostrarCarrito() {
   const tabla = document.getElementById("tabla-carrito");
-  if (!tabla) return; // si no estamos en carrito.html
+  if (!tabla) return;
 
   const carrito = obtenerCarrito();
-
   tabla.innerHTML = "";
 
   carrito.forEach(item => {
@@ -185,16 +201,21 @@ function mostrarCarrito() {
   });
 }
 
-/* --------------------------
-   Autocarga según página
------------------------------*/
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname.includes("productos.html")) {
-    cargarProductos();
-  }
+function updateCartCount() {
+  const carrito = obtenerCarrito();
+  const total = carrito.reduce((sum, it) => sum + (it.cantidad || 0), 0);
 
-  if (window.location.pathname.includes("carrito.html")) {
-    mostrarCarrito();
-  }
-});
+  const counter = document.querySelector("#cart-count");
+  if (counter) counter.textContent = total;
+
+  localStorage.setItem("cartCount", total);
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+document.addEventListener("carritoActualizado", updateCartCount);
+window.addEventListener("storage", updateCartCount);
+
+window.cartHelpers = {
+  updateCartCount
+};

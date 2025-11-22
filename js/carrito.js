@@ -1,24 +1,22 @@
 document.addEventListener("DOMContentLoaded", cargarCarrito);
 
 async function cargarCarrito() {
-
   const contenedor = document.getElementById("carrito-container");
 
-  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
 
-  // Si el carrito está roto → lo reparo
-  if (!carrito || typeof carrito !== "object" || Array.isArray(carrito)) {
+  if (typeof carrito !== "object" || Array.isArray(carrito)) {
     carrito = {};
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  // Si está vacío
   if (Object.keys(carrito).length === 0) {
     contenedor.innerHTML = "<p>El carrito está vacío.</p>";
+    document.dispatchEvent(new Event("carritoActualizado"));
     return;
   }
 
-  // Cargar productos desde JSON
   const res = await fetch("../data/productos.json");
   const data = await res.json();
   const productos = data.productos;
@@ -38,7 +36,6 @@ async function cargarCarrito() {
 
   for (const id in carrito) {
     const prod = productos.find(p => p.id == id);
-
     if (!prod) continue;
 
     const cantidad = carrito[id];
@@ -69,21 +66,18 @@ async function cargarCarrito() {
 
   contenedor.innerHTML = html;
 
-  // Eliminar **1 unidad**
+  // --- BOTONES DE BORRAR ---
   document.querySelectorAll(".eliminar").forEach(btn => {
     btn.addEventListener("click", e => {
       const id = e.target.dataset.id;
 
-      // Resta 1 unidad
       carrito[id]--;
 
-      // Si el producto llega a 0 → se elimina del carrito
-      if (carrito[id] <= 0) {
-        delete carrito[id];
-      }
+      if (carrito[id] <= 0) delete carrito[id];
 
       localStorage.setItem("carrito", JSON.stringify(carrito));
-      document.dispatchEvent(new Event('carritoActualizado'));
+
+      document.dispatchEvent(new Event("carritoActualizado"));
       cargarCarrito();
     });
   });
